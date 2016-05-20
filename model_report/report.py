@@ -35,6 +35,8 @@ try:
     from collections import OrderedDict
 except:
     OrderedDict = dict  # pyflakes:ignore
+    
+REPORT_MODULE_NAME = 'model_reports'
 
 
 def autodiscover():
@@ -53,7 +55,7 @@ def autodiscover():
         # Attempt to import the app's admin module.
         try:
             before_import_registry = copy.copy(reports)
-            import_module('%s.reports' % app)
+            import_module('%s.%s' % (app, REPORT_MODULE_NAME))
         except:
             # Reset the model registry to the state before the last import as
             # this import will have to reoccur on the next request and this

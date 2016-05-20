@@ -42,6 +42,7 @@ class HighchartRender(object):
 
     def reset(self):
         self.model = DictObject(**get_highchart_data())
+        self.model = DictObject(**get_highchart_data())
 
     def __init__(self, config):
         self.reset()
@@ -223,7 +224,6 @@ class HighchartRender(object):
             from django.utils import simplejson
         except ImportError:
             import json as simplejson
-
         json = unicode(self.model)
         json = simplejson.dumps(json)[1:-1]
         json = json.replace("'true'", 'true')
